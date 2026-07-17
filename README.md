@@ -81,7 +81,7 @@ UAS-KECERDASANBUATAN/
 
 
 ## 📸 Bukti Antarmuka Web Aplikasi (Hasil Pengujian)
-<img width="1792" height="905" alt="ss_tidak_layak" src="https://github.com/user-attachments/assets/621c6306-967c-4333-afae-ab772b410f86" />
+![Screenshot Aplikasi](https://github.com/user-attachments/assets/621c6306-967c-4333-afae-ab772b410f86)
 
 
 ## 🗄️ Konfigurasi & Skema Database (`nevorix_ios`)
