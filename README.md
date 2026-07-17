@@ -84,9 +84,8 @@ UAS-KECERDASANBUATAN/
 
 | Hasil Analisis: SANGAT LAYAK BELI ✨ | Hasil Analisis: TIDAK LAYAK / HINDARI ❌ |
 | :---: | :---: |
-| <img src="ss_layak.png" width="100%" alt="Web iPhone Layak"> | <img src="ss_tidak_layak.png" width="100%" alt="Web iPhone Tidak Layak"> |
+| ![Web iPhone Layak](ss_layak.png) | ![Web iPhone Tidak Layak](ss_tidak_layak.png) |
 | *Tampilan sistem saat mendeteksi komponen original dan Battery Health prima.* | *Tampilan sistem saat memberikan penalti jarak akibat adanya kerusakan hardware.* |
-
 ---
 
 ## 🗄️ Konfigurasi & Skema Database (`nevorix_ios`)
