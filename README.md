@@ -84,6 +84,7 @@ UAS-KECERDASANBUATAN/
 ![Screenshot Aplikasi](https://github.com/user-attachments/assets/621c6306-967c-4333-afae-ab772b410f86)
 
 
+
 ## 🗄️ Konfigurasi & Skema Database (`nevorix_ios`)
 
 Project ini menyertakan dump berkas basis data komplit di root folder (`nevorix_ios.sql`) yang mencakup struktur tabel beserta record datanya (`users` dan `chat_history`).
