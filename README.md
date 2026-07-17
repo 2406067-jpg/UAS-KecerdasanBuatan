@@ -182,7 +182,9 @@ python app.py
 2. Akses halaman login melalui URL berikut:
 
 ```text
-http://localhost/UAS-KECERDASANBUATAN/login.php
+http://localhost/UAS-KecerdasanBuatan/login.php
+Email      : admin@gmail.com
+Password   :12345678
 ```
 
 3. Lakukan proses login menggunakan akun yang tersedia.
