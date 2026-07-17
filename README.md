@@ -81,7 +81,7 @@ UAS-KECERDASANBUATAN/
 
 
 ## 📸 Bukti Antarmuka Web Aplikasi (Hasil Pengujian)
-![Screenshot Aplikasi](https://github.com/user-attachments/assets/621c6306-967c-4333-afae-ab772b410f86)
+<img src="https://github.com/2406067-jpg/UAS-KecerdasanBuatan/raw/main/ss_tidak_layak.png" width="100%">
 
 
 
