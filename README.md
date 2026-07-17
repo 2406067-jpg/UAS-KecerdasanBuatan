@@ -22,9 +22,9 @@ Proyek ini dibangun menggunakan ekosistem *hybrid multi-language* dengan pembagi
 ### 1. Web Environment & Storage
 * **PHP 8.x (Laragon / XAMPP):** Mengelola antarmuka input data pengguna, otentikasi login/logout, pengelolaan template views, dan visualisasi teks laporan kelayakan.
 * **cURL Extension:** Digunakan sebagai jembatan komunikasi HTTP POST JSON request dari server PHP menuju core AI Flask API.
-* **MySQL Database (HeidiSQL):** Sebagai penyimpanan data relasional untuk merekam history pengujian dan data chat history (`nevorix_ios`).
+* **MySQL Database (HeidiSQL):** Sebagai penyimpanan data relasional untuk merekam history pengujian, data akun user, dan data chat history (`nevorix_ios`).
 
-### 2. Python Analytics Engine (`python_engine/`)
+### 2. Python Analytics Engine
 * **Python 3.10+ & Jupyter Notebook (`.ipynb`):** Digunakan untuk riset model awal dan pembuatan prototype skrip klasifikasi.
 * **Flask Framework:** Menyediakan *endpoint API* untuk melayani request komputasi secara *real-time*.
 * **Numpy & Pandas:** Melakukan operasi vektor aljabar linier tingkat tinggi serta manipulasi dataframe pada dataset `.csv`.
@@ -32,74 +32,87 @@ Proyek ini dibangun menggunakan ekosistem *hybrid multi-language* dengan pembagi
 
 ---
 
-## 📂 Struktur Direktori Proyek (Sesuai Source Code)
+## 📂 Struktur Direktori Proyek
 
 ```text
 UAS-KECERDASANBUATAN/
 │
 ├── .vscode/
-│   └── settings.json                        # Konfigurasi workspace VS Code
+│   └── settings.json                  # Konfigurasi workspace VS Code
 │
 ├── assets/
 │   └── images/
-│       ├── bg-Dashboard.jpg                 # Aset gambar background dashboard aplikasi
-│       └── bg-login.jpg                     # Aset gambar background halaman login
+│       ├── bg-Dashboard.jpg           # Aset gambar background dashboard aplikasi
+│       └── bg-login.jpg               # Aset gambar background halaman login
 │
 ├── config/
-│   └── koneksi.php                          # Konfigurasi koneksi ke basis data MySQL
+│   └── koneksi.php                    # Konfigurasi koneksi ke basis data MySQL
 │
 ├── data/
 │   ├── dataset/
 │   │   ├── apple_products_dataset_100k.csv  # Dataset spesifikasi lini produk Apple global
 │   │   └── dataset_iphone_kelayakan.csv     # Dataset log riwayat kelayakan fisik lapangan
-│   └── Jurnal/                              # Dokumen referensi dan literatur review jurnal
+│   └── Jurnal/                        # Dokumen referensi dan literatur review jurnal
 │
-├── model_saved/                             # Tempat penyimpanan berkas model & encoder (.pkl)
-│   ├── encoder_garansi.pkl                  # Encoder status garansi perangkat
-│   ├── encoder_model.pkl                    # Encoder tipe model device
-│   ├── encoder_status.pkl                   # Encoder variabel status hardware
-│   ├── iphone_classifier.pkl                # Core model classifier terbobot
-│   └── scaler.pkl                           # Scaler untuk normalisasi fitur numerik
+├── model_saved/                       # Tempat penyimpanan berkas model & encoder (.pkl)
+│   ├── encoder_garansi.pkl            # Encoder status garansi perangkat
+│   ├── encoder_model.pkl              # Encoder tipe model device
+│   ├── encoder_status.pkl             # Encoder variabel status hardware
+│   ├── iphone_classifier.pkl          # Core model classifier terbobot
+│   └── scaler.pkl                     # Scaler untuk normalisasi fitur numerik
 │
-├── views/                                   # Komponen visual / layout partial sistem
-│   ├── library.php                          # Pustaka fungsi visual/helper
-│   ├── projects.php                         # View data manajemen proyek
-│   └── settings.php                         # View pengaturan sistem
+├── views/                             # Komponen visual / layout partial sistem
+│   ├── library.php                    # Pustaka fungsi visual/helper
+│   ├── projects.php                   # View data manajemen proyek
+│   └── settings.php                   # View pengaturan sistem
 │
-├── app.py                                   # Core Web API Flask (Engine Utama Perhitungan Jarak)
-├── index.php                                # Halaman User Interface (UI) dashboard utama
-├── login.php                                # Halaman otentikasi login pengguna
-├── logout.php                               # Halaman penutup sesi / logout pengguna
-├── Laporan_uas.md                           # Berkas Laporan 10 Tahap Real Proyek ML
-├── README.md                                # Dokumentasi cara penggunaan (File ini)
-├── train_model.py                           # Skrip preprocessing data & serialization pkl
-├── uas_model.ipynb                          # Jupyter Notebook dokumentasi riset model
-└── update_dataset.py                        # Skrip utilitas pembaruan data CSV lokal
+├── app.py                             # Core Web API Flask (Engine Utama Perhitungan Jarak)
+├── index.php                          # Halaman User Interface (UI) dashboard utama
+├── login.php                          # Halaman otentikasi login pengguna
+├── logout.php                         # Halaman penutup sesi / logout pengguna
+├── Laporan_uas.md                     # Berkas Laporan 10 Tahap Real Proyek ML
+├── nevorix_ios.sql                    # Backup database full (skema tabel + data paket komplit)
+├── README.md                          # Dokumentasi cara penggunaan (File ini)
+├── ss_layak.jpg.png                   # Dokumentasi tampilan hasil analisis LAYAK
+├── ss_tidak_layak.jpg.png             # Dokumentasi tampilan hasil analisis TIDAK LAYAK
+├── train_model.py                     # Skrip preprocessing data & serialization pkl
+├── uas_model.ipynb                    # Jupyter Notebook dokumentasi riset model
+└── update_dataset.py                  # Skrip utilitas pembaruan data CSV lokal
+
+
+## 📸 Bukti Antarmuka Web Aplikasi (Hasil Pengujian)
+
+| Hasil Analisis: SANGAT LAYAK BELI ✨ | Hasil Analisis: TIDAK LAYAK / HINDARI ❌ |
+| :---: | :---: |
+| <img src="ss_layak.jpg.png" width="100%" alt="Web iPhone Layak"> | <img src="ss_tidak_layak.jpg.png" width="100%" alt="Web iPhone Tidak Layak"> |
+| *Tampilan sistem saat mendeteksi komponen original dan Battery Health prima.* | *Tampilan sistem saat memberikan penalti jarak akibat adanya kerusakan hardware.* |
 
 ---
 
-## 🗄️ Skema Kolom Database (`nevorix_ios.chat_history`)
+## 🗄️ Konfigurasi & Skema Database (`nevorix_ios`)
 
-Data hasil percakapan dan input fisik dari pengguna di web dipetakan langsung ke tabel basis data `chat_history` dengan skema atribut riil berikut:
+Project ini menyertakan dump berkas basis data komplit di root folder (`nevorix_ios.sql`) yang mencakup struktur tabel beserta record datanya (`users` dan `chat_history`).
+
+### Atribut Tabel `chat_history` (Log Transaksi Real-time):
 
 | # | Nama Kolom | Tipe Data | Panjang | Aturan / Default | Keterangan |
-|---|------------|-----------|---------|------------------|------------|
-| 1 | `id` | INT | - | AUTO_INCREMENT (PK) | ID unik log riwayat |
-| 2 | `email` | VARCHAR | 100 | No default | Email user penguji |
-| 3 | `user_message` | TEXT | - | No default | Pesan/input teks dari user |
-| 4 | `bot_response` | TEXT | - | No default | Respon teks output dari sistem AI |
-| 5 | `created_at` | TIMESTAMP | - | CURRENT_TIMESTAMP | Waktu pencatatan transaksi |
-| 6 | `session_id` | VARCHAR | 50 | 'default_session' | ID sesi aktif user |
-| 7 | `model_device` | VARCHAR | 50 | NULL | Tipe model iPhone yang diuji |
-| 8 | `battery_health`| INT | - | NULL | Persentase kapasitas baterai (0-100) |
-| 9 | `storage_size` | INT | - | NULL | Kapasitas internal memori (GB) |
-| 10| `sinyal_status` | VARCHAR | 50 | NULL | Validitas sinyal IMEI (Aman/Terblokir) |
-| 11| `biometrik_status`| VARCHAR | 50 | NULL | Kondisi Face ID / Touch ID (On/Off) |
-| 12| `part_status` | VARCHAR | 50 | NULL | Orisinalitas suku cadang LCD / True Tone |
-| 13| `kamera_status` | VARCHAR | 50 | NULL | Kondisi fungsionalitas lensa kamera |
-| 14| `icloud_status` | VARCHAR | 50 | NULL | Keamanan aktivasi akun Apple ID (Bebas/Lock) |
-| 15| `jangka_pakai`  | VARCHAR | 50 | NULL | Durasi pemakaian operasional (Tahun) |
-| 16| `skor_persen`   | INT | - | '0' | Nilai persentase kemulusan fisik luar |
+| :---: |---|---| :---: |---|---|
+| **1** | `id` | INT | - | AUTO_INCREMENT (PK) | ID unik log riwayat |
+| **2** | `email` | VARCHAR | 100 | No default | Email user penguji |
+| **3** | `user_message` | TEXT | - | No default | Pesan/input teks dari user |
+| **4** | `bot_response` | TEXT | - | No default | Respon teks output dari sistem AI |
+| **5** | `created_at` | TIMESTAMP | - | CURRENT_TIMESTAMP | Waktu pencatatan transaksi |
+| **6** | `session_id` | VARCHAR | 50 | 'default_session' | ID sesi aktif user |
+| **7** | `model_device` | VARCHAR | 50 | NULL | Tipe model iPhone yang diuji |
+| **8** | `battery_health` | INT | - | NULL | Persentase kapasitas baterai (0-100) |
+| **9** | `storage_size` | INT | - | NULL | Kapasitas internal memori (GB) |
+| **10** | `sinyal_status` | VARCHAR | 50 | NULL | Validitas sinyal IMEI (Aman/Terblokir) |
+| **11** | `biometrik_status` | VARCHAR | 50 | NULL | Kondisi Face ID / Touch ID (On/Off) |
+| **12** | `part_status` | VARCHAR | 50 | NULL | Orisinalitas suku cadang LCD / True Tone |
+| **13** | `kamera_status` | VARCHAR | 50 | NULL | Kondisi fungsionalitas lensa kamera |
+| **14** | `icloud_status` | VARCHAR | 50 | NULL | Keamanan aktivasi akun Apple ID (Bebas/Lock) |
+| **15** | `jangka_pakai` | VARCHAR | 50 | NULL | Durasi pemakaian operasional (Tahun) |
+| **16** | `skor_persen` | INT | - | '0' | Nilai persentase kemulusan fisik luar |
 
 ---
 
@@ -110,7 +123,9 @@ Sistem pendukung keputusan ini mencari tingkat kemiripan kondisi terdekat antara
 $$d(x, y) = \sqrt{\sum_{i=1}^{n} w_i (x_i - y_i)^2}$$
 
 ### Matriks Pembobotan Skala Prioritas Fitur ($w_i$)
+
 Untuk menghasilkan klasifikasi yang objektif terhadap bahaya penipuan visual, bobot tiap parameter diatur secara ketat pada berkas `app.py`:
+
 * **Variabel `battery_health`:** Diberi nilai bobot **5.0** karena merupakan komponen paling vital dalam ketahanan operasional daya perangkat.
 * **Variabel `skor_persen` fisik luar:** Diberi nilai bobot **3.0** sebagai representasi nilai estetika unit.
 * **Variabel Hardware Lainnya:** Menggunakan bobot dasar **1.0** untuk mendeteksi penalti komponen imitasi.
@@ -119,58 +134,95 @@ Untuk menghasilkan klasifikasi yang objektif terhadap bahaya penipuan visual, bo
 
 ## ⚙️ Langkah Instalasi & Menjalankan Aplikasi
 
-Silakan ikuti instruksi langkah demi langkah di bawah ini untuk menjalankan aplikasi di komputer lokal lu:
+Silakan ikuti instruksi langkah demi langkah di bawah ini untuk menjalankan aplikasi di komputer lokal:
 
-### Langkah 1: Setup Lingkungan Web Server PHP & MySQL
-* Pindahkan folder proyek `UAS-KECERDASANBUATAN` ini ke dalam direktori server lokal lu (Contoh: `C:/laragon/www/UAS-KECERDASANBUATAN` atau `C:/xampp/htdocs/UAS-KECERDASANBUATAN`).
-* Jalankan aplikasi Laragon / XAMPP Control Panel, kemudian aktifkan *service* **Apache Modul** dan **MySQL Server**.
-* Buka aplikasi database manager lu (seperti HeidiSQL), buat koneksi lokal baru ke `Laragon.MySQL`.
-* Buat sebuah basis data baru bernama **`nevorix_ios`**.
-* Klik kanan pada database `nevorix_ios` -> **Create new** -> **Table** dengan nama **`chat_history`**, lalu masukkan ke-16 kolom di atas sesuai tipe data yang tertera di skema.
+### Langkah 1: Setup Lingkungan Web Server & Import Database
+1. Pindahkan folder proyek `UAS-KECERDASANBUATAN` ini ke dalam direktori server lokal Anda (Contoh: `D:/laragon/www/UAS-KECERDASANBUATAN`).
+2. Jalankan aplikasi Laragon / XAMPP Control Panel, kemudian aktifkan service **Apache** dan **MySQL**.
+3. Buka database manager Anda (seperti HeidiSQL / phpMyAdmin), lalu buat database baru bernama **`nevorix_ios`**.
+4. Pilih database `nevorix_ios`, klik menu **Import / Execute SQL file**, arahkan ke file `nevorix_ios.sql` yang terletak di root folder proyek ini, lalu jalankan prosesnya hingga selesai. Semua skema tabel beserta contoh datanya otomatis langsung siap pakai tanpa perlu konfigurasi manual tambahan.
 
 ### Langkah 2: Setup Dependencies & Menjalankan Python Flask API
-* Buka Terminal atau Command Prompt (CMD) baru, lalu arahkan *path* direktori aktif masuk ke dalam folder utama proyek lu:
-  ```bash
-  cd C:/laragon/www/UAS-KECERDASANBUATAN
+1. Buka Terminal atau Command Prompt (CMD) baru, lalu arahkan path direktori aktif masuk ke dalam folder utama proyek:
+   ```bash
+   cd D:/laragon/www/UAS-KECERDASANBUATAN
 
-  Markdown
-* Lakukan instalasi seluruh pustaka package *dependency* komputasi Python yang diperlukan dengan mengetik perintah berikut:
-  ```bash
-  pip install flask numpy pandas scikit-learn jupyter
-Eksekusi berkas persiapan data satu kali untuk memperbarui berkas serialisasi .pkl di dalam folder model_saved/:
 
-Bash
+## 🚀 Instalasi dan Menjalankan Aplikasi
+
+### 1. Instalasi Dependency Python
+
+Lakukan instalasi seluruh pustaka (package) Python yang diperlukan dengan menjalankan perintah berikut:
+
+```bash
+pip install flask numpy pandas scikit-learn jupyter
+```
+
+### 2. Persiapan Model
+
+Jalankan berkas persiapan data satu kali untuk memperbarui berkas serialisasi `.pkl` yang berada di dalam folder `model_saved/`:
+
+```bash
 python train_model.py
-Jalankan Core Analytics Engine berbasis web Flask server dengan mengetik perintah:
+```
 
-Bash
+### 3. Menjalankan Flask Server
+
+Jalankan Core Analytics Engine berbasis Flask menggunakan perintah berikut:
+
+```bash
 python app.py
-Catatan: Jika berhasil, terminal akan memunculkan log info bahwa server mikro Python Flask aktif berjalan di alamat lokal default: http://127.0.0.1:5000.
+```
 
-Langkah 3: Menjalankan Aplikasi Web Client
-Buka browser web lu (Chrome / Edge / Firefox).
+> 💡 **Catatan:** Jika berhasil, terminal akan menampilkan informasi bahwa server Flask telah berjalan pada alamat default:
+>
+> **http://127.0.0.1:5000**
 
-Panggil alamat URL antarmuka sistem login: http://localhost/UAS-KECERDASANBUATAN/login.php.
+---
 
-Silakan lakukan login, masuk ke menu pengujian, isi form data parameter pemeriksaan iPhone bekas yang ingin diuji secara acak, kemudian klik tombol Analisis Kelayakan.
+# 🌐 Menjalankan Aplikasi Web Client
 
-Halaman web akan memuat data, mengirimkan request JSON ke Flask API, mengembalikan respon visual rekomendasi, dan menyimpan datanya langsung ke database MySQL secara otomatis.
+1. Buka browser pilihan Anda (Google Chrome, Microsoft Edge, atau Mozilla Firefox).
+2. Akses halaman login melalui URL berikut:
 
-📊 Hasil Evaluasi Performansi Model
-Berdasarkan hasil pengujian validasi sistem secara matang, engine berbasis jarak spasial terbobot ini menghasilkan performa metrik sebagai berikut:
+```text
+http://localhost/UAS-KECERDASANBUATAN/login.php
+```
 
-Tingkat Akurasi Universal (Accuracy): 97.2%
+3. Lakukan proses login menggunakan akun yang tersedia.
+4. Masuk ke menu pengujian.
+5. Isi seluruh parameter pemeriksaan iPhone bekas yang akan dianalisis.
+6. Klik tombol **Analisis Kelayakan**.
+7. Sistem akan secara otomatis:
+   - Memuat data input pengguna.
+   - Mengirimkan request JSON ke Flask API.
+   - Melakukan proses analisis menggunakan model Machine Learning.
+   - Mengembalikan hasil rekomendasi secara real-time.
+   - Menyimpan hasil analisis ke database MySQL secara otomatis.
 
-Tingkat Presisi Keputusan (Precision): 96.5%
+---
 
-Sensitivitas Penyaringan Cacat (Recall): 96.8%
+# 📊 Hasil Evaluasi Performansi Model
 
-Durasi Waktu Komputasi (Response Time): 0.004 detik (Berjalan sangat gegas di bawah batas toleransi user berkat metode sub-clustering data split).
+Berdasarkan hasil pengujian dan validasi sistem, model menghasilkan performa sebagai berikut:
 
-Dokumentasi ini disusun secara penuh untuk memenuhi kriteria penilaian tugas Ujian Akhir Semester (UAS) mata kuliah Machine Learning / Kecerdasan Buatan.
+| Metrik | Hasil |
+|--------|-------|
+| **Accuracy** | **97.2%** |
+| **Precision** | **96.5%** |
+| **Recall** | **96.8%** |
+| **Response Time** | **0.004 detik** |
 
-Nama Mahasiswa: Dicki Firgiawan
+> ⚡ **Keterangan:** Waktu komputasi hanya **0.004 detik**, sehingga proses analisis dapat berjalan sangat cepat dan responsif berkat penerapan metode *sub-clustering data split*.
 
-Nomor Induk Mahasiswa (NIM): 2406067
+---
 
-Dosen Pengampu: Ibu Leni Fitriyani, S.Kom., M.Kom.
+# 📄 Informasi Proyek
+
+Dokumentasi ini disusun untuk memenuhi persyaratan penilaian **Ujian Akhir Semester (UAS)** pada mata kuliah **Machine Learning / Kecerdasan Buatan**.
+
+| Keterangan | Informasi |
+|------------|-----------|
+| **Nama Mahasiswa** | Dicki Firgiawan |
+| **NIM** | 2406067 |
+| **Dosen Pengampu** | Ibu Leni Fitriyani, S.Kom., M.Kom. |
