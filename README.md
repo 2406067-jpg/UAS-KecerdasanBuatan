@@ -183,7 +183,8 @@ python app.py
 
 ```text
 http://localhost/UAS-KecerdasanBuatan/login.php
-Email      : admin@gmail.com
+
+Email      :admin@gmail.com
 Password   :12345678
 ```
 
