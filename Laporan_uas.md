@@ -3,12 +3,12 @@
 ---
 
 ## 1. Judul Proyek
-**Sistem Pendukung Keputusan Analisis Kelayakan Perangkat iPhone Bekas Menggunakan Metode Weighted Euclidean Distance Berbasis Web API (PHP & Python Flask)**[cite: 1]
+**Sistem Pendukung Keputusan Analisis Kelayakan Perangkat iPhone Bekas Menggunakan Metode Weighted Euclidean Distance Berbasis Web API (PHP & Python Flask)**
 
-### Nama Kelompok (Maksimal 2 Orang)
-* **Nama:** Dicki Firgiawan[cite: 1]
-* **NIM:** 2406067[cite: 1]
-* **Dosen Pengampu:** Leni Fitriyani, S.Kom., M.Kom.[cite: 1]
+### 👤 Identitas Pengembang (Proyek Individu)
+* **Nama:** Dicki Firgiawan
+* **NIM:** 2406067
+* **Dosen Pengampu:** Leni Fitriyani, S.Kom., M.Kom.
 
 ### Domain Proyek (Latar Belakang)
 Pasar perangkat telepon pintar (*smartphone*) bekas, khususnya lini produk iPhone, memiliki tingkat likuiditas transaksi yang sangat tinggi di masyarakat[cite: 1]. Namun, tingginya transaksi ini diiringi dengan risiko asimetri informasi yang besar antara penjual dan pembeli (Akerlof, 1970)[cite: 1]. Calon pembeli awam sering kali terjebak oleh manipulasi kosmetik luar perangkat yang sengaja dipoles agar terlihat mulus (*like-new*), tanpa mengetahui adanya penurunan fungsi atau kerusakan parah pada komponen *hardware* internal[cite: 1].
