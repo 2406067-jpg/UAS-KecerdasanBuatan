@@ -71,9 +71,9 @@ Berdasarkan skema kolom basis data MySQL pada tabel `chat_history` yang terhubun
 
 ### Tipe Data dan Target Klasifikasi
 * **Target Klasifikasi:** Fitur target bernilai numerik kategorikal pada dataset (`label_kelayakan`) yang dikonversi menjadi keputusan tekstual akhir[cite: 1]:
-  * `0` : **TIDAK LAYAK / SEBAIKNYA DIHINDARI ❌**[cite: 1]
-  * `1` : **LAYAK SEDANG / PERIKSA KEMBALI ⚠️**[cite: 1]
-  * `2` : **SANGAT LAYAK BELI (LIKE NEW) ✨**[cite: 1]
+  * `0` : **TIDAK LAYAK / SEBAIKNYA DIHINDARI ❌**
+  * `1` : **LAYAK SEDANG / PERIKSA KEMBALI ⚠️**
+  * `2` : **SANGAT LAYAK BELI (LIKE NEW) ✨**
 
 ---
 
