@@ -73,8 +73,8 @@ UAS-KECERDASANBUATAN/
 ├── Laporan_uas.md                     # Berkas Laporan 10 Tahap Real Proyek ML
 ├── nevorix_ios.sql                    # Backup database full (skema tabel + data paket komplit)
 ├── README.md                          # Dokumentasi cara penggunaan (File ini)
-├── ss_layak.jpg.png                   # Dokumentasi tampilan hasil analisis LAYAK
-├── ss_tidak_layak.jpg.png             # Dokumentasi tampilan hasil analisis TIDAK LAYAK
+├── ss_layak.png                   # Dokumentasi tampilan hasil analisis LAYAK
+├── ss_tidak_layak.png             # Dokumentasi tampilan hasil analisis TIDAK LAYAK
 ├── train_model.py                     # Skrip preprocessing data & serialization pkl
 ├── uas_model.ipynb                    # Jupyter Notebook dokumentasi riset model
 └── update_dataset.py                  # Skrip utilitas pembaruan data CSV lokal
@@ -84,7 +84,7 @@ UAS-KECERDASANBUATAN/
 
 | Hasil Analisis: SANGAT LAYAK BELI ✨ | Hasil Analisis: TIDAK LAYAK / HINDARI ❌ |
 | :---: | :---: |
-| <img src="ss_layak.jpg.png" width="100%" alt="Web iPhone Layak"> | <img src="ss_tidak_layak.jpg.png" width="100%" alt="Web iPhone Tidak Layak"> |
+| <img src="ss_layak.png" width="100%" alt="Web iPhone Layak"> | <img src="ss_tidak_layak.png" width="100%" alt="Web iPhone Tidak Layak"> |
 | *Tampilan sistem saat mendeteksi komponen original dan Battery Health prima.* | *Tampilan sistem saat memberikan penalti jarak akibat adanya kerusakan hardware.* |
 
 ---
